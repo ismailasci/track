@@ -1,6 +1,7 @@
 language: php
 
 php:
+  - 5.3.3
   - 5.3
   - 5.4
   - 5.5
@@ -8,6 +9,6 @@ php:
 before_script:
   - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer self-update
-  - composer install -n --dev --prefer-source
+  - composer install --dev --prefer-source
 
 script: vendor/bin/phpspec run

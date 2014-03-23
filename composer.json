@@ -12,6 +12,9 @@
     "autoload": {
         "psr-0": { "Track" : "src/" }
     },
+    "require": {
+        "php": ">=5.3.3"
+    },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",
         "symfony/http-foundation": "2.4.*@dev"

@@ -55,9 +55,4 @@ class MongoDBStorageSpec extends ObjectBehavior
 
         $this->runNativeQuery($query, null)->shouldReturn(array());
     }
-
-    function it_should_run_native_query_and_return_result()
-    {
-        throw new PendingException('Find a way to iterate db results.');
-    }
 }

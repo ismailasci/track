@@ -13,7 +13,7 @@ class Query
         $this->storage = $storage;
     }
 
-    public function native(array $query, callable $callback = null)
+    public function native(array $query, $callback = null)
     {
         return $this->storage->runNativeQuery($query, $callback);
     }

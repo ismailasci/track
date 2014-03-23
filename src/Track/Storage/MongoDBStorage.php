@@ -23,7 +23,7 @@ class MongoDBStorage implements StorageInterface
         ;
     }
 
-    public function runNativeQuery(array $query, callable $callback = null)
+    public function runNativeQuery(array $query, $callback = null)
     {
         $data = $this->mongodb
             ->selectCollection(self::MONGODB_EVENT_COLLECTION)

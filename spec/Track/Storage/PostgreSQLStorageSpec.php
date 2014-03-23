@@ -69,16 +69,4 @@ class PostgreSQLStorageSpec extends ObjectBehavior
 
         $this->runNativeQuery($query, null)->shouldReturn(array());
     }
-
-    function it_should_run_native_query_and_return_result()
-    {
-//        $resultSet = array(array('id' => 1, 'data' => '"key" => "value \"2\" ", "key2" => "value2"'), false);
-//        $a = function() use ($resultSet) {
-//            $row = array_shift($resultSet);
-//            return null === $row ? false : $row;
-//        };
-//        $pdoStatement->fetch(\PDO::FETCH_ASSOC)->willReturn($a());
-
-        throw new PendingException('Find a way to iterate db results.');
-    }
 }

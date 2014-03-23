@@ -22,7 +22,7 @@ class PostgreSQLStorage implements StorageInterface
         $stmt->execute();
     }
 
-    public function runNativeQuery(array $query, callable $callback = null)
+    public function runNativeQuery(array $query, $callback = null)
     {
         $statement = $this->pdo->prepare($query['query']);
         $statement->execute($query['parameters']);

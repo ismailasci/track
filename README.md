@@ -1,5 +1,8 @@
 ## track event based tracking system with multiple backend support
 
+[![Build Status](https://travis-ci.org/ismailasci/track.svg?branch=master)](https://travis-ci.org/ismailasci/track)
+[![Latest Stable Version](https://poser.pugx.org/asci/track/v/stable.png)](https://packagist.org/packages/asci/track) [![Total Downloads](https://poser.pugx.org/asci/track/downloads.png)](https://packagist.org/packages/asci/track)
+
 track is an event based tracking system that helps you to collect and query statistical data
 based on the actions from your customers, users or visitors.
 

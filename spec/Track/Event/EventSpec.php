@@ -75,10 +75,10 @@ class EventSpec extends ObjectBehavior
 
     public function getMatchers()
     {
-        return [
+        return array(
             'beBiggerThen' => function ($subject, $key) {
                 return $subject > $key;
             },
-        ];
+        );
     }
 }

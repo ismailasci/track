@@ -1,0 +1,28 @@
+{
+    "name": "asci/track",
+    "description": "track is event based tracking system with multiple database backend support.",
+    "keywords": ["event", "tracking", "conversion", "marketing", "statistic"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ismail Asci",
+            "email": "ismail.asci@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Track" : "src/" }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev",
+        "symfony/http-foundation": "2.4.*@dev"
+    },
+    "suggest": {
+        "ext-mongo": "for using mongodb backend",
+        "ext-pdo_pgsql": "for using postgresql backend"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

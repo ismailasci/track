@@ -8,11 +8,9 @@ use Prophecy\Argument;
 class HttpEventSpec extends ObjectBehavior
 {
     private $initialData = array(
-        'key' => 'value',
         'ip' => '127.0.0.1',
         'url' => 'http://www.example.com/',
         'referer' => 'http://www.referer.com/',
-        'timestamp' => '1234567',
     );
 
     function let()
@@ -29,7 +27,8 @@ class HttpEventSpec extends ObjectBehavior
     function its_ip_has_initial_value()
     {
         $this->getIp()->shouldReturn('127.0.0.1');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('ip');
+        $this->getData()->shouldContain('127.0.0.1');
     }
 
     function its_ip_is_mutable()
@@ -38,13 +37,15 @@ class HttpEventSpec extends ObjectBehavior
         $this->initialData['ip'] = '192.168.0.1';
 
         $this->getIp()->shouldReturn('192.168.0.1');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('ip');
+        $this->getData()->shouldContain('192.168.0.1');
     }
 
     function its_url_has_initial_value()
     {
         $this->getUrl()->shouldReturn('http://www.example.com/');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('url');
+        $this->getData()->shouldContain('http://www.example.com/');
     }
 
     function its_url_is_mutable()
@@ -53,13 +54,15 @@ class HttpEventSpec extends ObjectBehavior
         $this->initialData['url'] = 'http://www.domain.com/';
 
         $this->getUrl()->shouldReturn('http://www.domain.com/');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('url');
+        $this->getData()->shouldContain('http://www.domain.com/');
     }
 
     function its_referer_has_initial_value()
     {
         $this->getReferer()->shouldReturn('http://www.referer.com/');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('referer');
+        $this->getData()->shouldContain('http://www.referer.com/');
     }
 
     function its_referer_is_mutable()
@@ -68,7 +71,8 @@ class HttpEventSpec extends ObjectBehavior
         $this->initialData['referer'] = 'http://www.domain.com/';
 
         $this->getReferer()->shouldReturn('http://www.domain.com/');
-        $this->getData()->shouldBeLike($this->initialData);
+        $this->getData()->shouldHaveKey('referer');
+        $this->getData()->shouldContain('http://www.domain.com/');
     }
 
     function it_should_determine_ip()

@@ -19,7 +19,7 @@ class SymfonyHttpEventSpec extends ObjectBehavior
 
         $server->get('HTTP_REFERER')->shouldBeCalled()->willReturn(null);
 
-        $this->beConstructedWith($request, 'Page View', array('timestamp' => '1234567'));
+        $this->beConstructedWith($request, 'Page View', array('timestamp' => '1234567', 'id' => 'random'));
     }
 
     function it_should_be_event()
@@ -35,7 +35,8 @@ class SymfonyHttpEventSpec extends ObjectBehavior
             'ip' => '127.0.0.1',
             'url' => 'http://www.example.com',
             'referer' => null,
-            'timestamp' => '1234567'
+            'timestamp' => '1234567',
+            'id' => 'random'
         ));
     }
 }

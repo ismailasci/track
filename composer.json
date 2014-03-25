@@ -13,7 +13,8 @@
         "psr-0": { "Track" : "src/" }
     },
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "ircmaxell/random-lib": "1.0.*@dev"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",

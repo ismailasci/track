@@ -4,12 +4,17 @@ namespace spec\Track\Event;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Track\Event\Event;
 
 class EventSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith('Page View', array('key' => 'value', 'timestamp' => '1234567'));
+        $this->beConstructedWith('Page View', array(
+            'key' => 'value',
+            'timestamp' => '1234567',
+            'id' => 'random_string',
+        ));
     }
 
     function it_should_be_event()
@@ -32,7 +37,11 @@ class EventSpec extends ObjectBehavior
     function its_timestamp_has_initial_value()
     {
         $this->getTimestamp()->shouldReturn('1234567');
-        $this->getData()->shouldBeLike(array('key' => 'value', 'timestamp' => '1234567'));
+        $this->getData()->shouldBeLike(array(
+            'key' => 'value',
+            'timestamp' => '1234567',
+            'id' => 'random_string',
+        ));
     }
 
     function its_timestamp_is_mutable()
@@ -40,7 +49,11 @@ class EventSpec extends ObjectBehavior
         $this->setTimestamp('12345610');
 
         $this->getTimestamp()->shouldReturn('12345610');
-        $this->getData()->shouldBeLike(array('key' => 'value', 'timestamp' => '12345610'));
+        $this->getData()->shouldBeLike(array(
+            'key' => 'value',
+            'timestamp' => '12345610',
+            'id' => 'random_string',
+        ));
     }
 
     function its_data_has_initial_value()
@@ -73,11 +86,22 @@ class EventSpec extends ObjectBehavior
         $this->getTimestamp()->shouldBeBiggerThen($time);
     }
 
+    function it_should_set_random_identifier_if_non_given()
+    {
+        $this->beConstructedWith('Page View', array('key' => 'value'));
+
+        $this->getId()->shouldBeString();
+        $this->getId()->shouldHasLength(Event::DEFAULT_RANDOM_ID_LENGTH);
+    }
+
     public function getMatchers()
     {
         return array(
             'beBiggerThen' => function ($subject, $key) {
                 return $subject > $key;
+            },
+            'hasLength' => function ($subject, $key) {
+                return strlen($subject) === $key;
             },
         );
     }

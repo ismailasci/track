@@ -2,11 +2,17 @@
 
 namespace Track\Event;
 
+use RandomLib\Factory;
+
 class Event implements EventInterface
 {
+    const DEFAULT_RANDOM_ID_LENGTH = 256;
+
     protected $name;
 
     protected $data;
+
+    protected $id;
 
     protected $timestamp;
 
@@ -20,6 +26,7 @@ class Event implements EventInterface
 
         $this->data = $data;
         $this->setTimestamp(isset($data['timestamp']) ? $data['timestamp'] : time());
+        $this->setId(isset($data['id']) ? $data['id'] : $this->generateRandomId());
     }
 
     public function getName()
@@ -50,6 +57,23 @@ class Event implements EventInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        $this->data['id'] = $id;
+    }
+
+    /**
      * @param mixed $data
      */
     public function setData($data)
@@ -68,5 +92,13 @@ class Event implements EventInterface
     public function toArray()
     {
         return array_merge($this->getData(), array('name' => $this->name));
+    }
+
+    protected function generateRandomId()
+    {
+        $factory = new Factory();
+        $generator = $factory->getLowStrengthGenerator();
+
+        return $generator->generateString(self::DEFAULT_RANDOM_ID_LENGTH);
     }
 }
